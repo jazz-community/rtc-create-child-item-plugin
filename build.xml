@@ -7,7 +7,10 @@
 	<!-- identifier of the plugin -->
 	<property name="pluginID" value="com.siemens.bt.jazz.workitemeditor.createchild" />
 	<!-- name of the Zip file -->
-	<property name="zipName" value="CreateChild" />
+    <!-- Set build label depending on running on the jbe or not. -->
+    <condition property="zipName" value="CreateChild" else="CreateChild_${buildLabel}">
+        <contains string="${buildLabel}" substring="buildLabel" />
+    </condition>
 	<!-- identifier of the feature -->
 	<property name="featureID" value="${pluginID}.feature" />
 	<!-- current version -->
@@ -116,7 +119,7 @@
 
 	<target name="dist" depends="createInIfile,createPropertyFile,createFeatureXML,packPlugin,createFeatureJar">
 		<delete file="${feature.dir}/feature.xml" />
-		<zip destfile="${zipName}_${buildLabel}.zip">
+		<zip destfile="${zipName}.zip">
 			<zipfileset dir="${dist.dir}" />
 		</zip>
 		<echo message="dist.zip created" />

@@ -1,4 +1,4 @@
-<project name="CQlight4RTC" default="dist" basedir=".">
+<project name="CreateChildItem" default="dist" basedir=".">
 	<description>Create child item build script</description>
 	<!-- define the alias of your destination application; e.g. ccm, jts, rm, qm-->
 	<property name="appType" value="ccm" />

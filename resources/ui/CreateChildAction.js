@@ -2,7 +2,8 @@ define([
         "dojo/_base/declare",
         "../library/ActionNode",
 		"../library/WorkItem",
-], function(declare, ActionNode, WorkItem) {
+		"../library/ActionButtonIcon"
+], function(declare, ActionNode, WorkItem, ActionButtonIcon) {
 	var cssSelector = "img.button-img";
 	var backgroundUrl = "/service/com.ibm.team.rtc.common.internal.service.web.sprite.ISpriteImageService/img/bundle?id=com.ibm.team.workitem.common&etag=b8b09f70d69bbc3fef0753f03eb21ae9"
 
@@ -30,22 +31,7 @@ define([
 		//		}
 		constructor: function(params) {
 			var nodeLabel = params.actionSpec.label;
-			// extract this functionality into a separate class
-			var observer = new MutationObserver(function(mutations) {
-				mutations.forEach(function(mutation) {
-					if (mutation.target.title === nodeLabel) {
-						observer.disconnect();
-						[].forEach.call(document.querySelectorAll('[alt="' + nodeLabel + '"]'), function(node) {
-							node.style.background = 'rgba(0, 0, 0, 0) url("' + net.jazz.ajax._contextRoot + backgroundUrl + '") no-repeat scroll -96px -96px';
-						});
-					}
-				});
-			});
-
-			var config = { attributes: true, childList: true, characterData: true, subtree: true };
-			observer.observe(document.body, config);
-
-
+			new ActionButtonIcon(nodeLabel, backgroundUrl).attach();
 			this._buttonNode = new ActionNode(cssSelector, nodeLabel);
 		},
 		

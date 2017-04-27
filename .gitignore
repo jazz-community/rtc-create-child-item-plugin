@@ -1,0 +1,5 @@
+*.swp
+**/.jazzignore
+buildengine.xml
+
+resources/images/icons/child_item.png

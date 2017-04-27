@@ -8,8 +8,8 @@
 	<property name="pluginID" value="com.siemens.bt.jazz.workitemeditor.createchild" />
 	<!-- name of the Zip file -->
     <!-- Set build label depending on running on the jbe or not. -->
-    <condition property="zipName" value="CreateChild" else="CreateChild_${buildLabel}">
-        <contains string="${buildLabel}" substring="buildLabel" />
+    <condition property="fileName" value="CreateChild_${buildLabel}" else="CreateChild">
+        <isset property="buildLabel" />
     </condition>
 	<!-- identifier of the feature -->
 	<property name="featureID" value="${pluginID}.feature" />
@@ -119,7 +119,7 @@
 
 	<target name="dist" depends="createInIfile,createPropertyFile,createFeatureXML,packPlugin,createFeatureJar">
 		<delete file="${feature.dir}/feature.xml" />
-		<zip destfile="${zipName}.zip">
+		<zip destfile="${fileName}.zip">
 			<zipfileset dir="${dist.dir}" />
 		</zip>
 		<echo message="dist.zip created" />

@@ -1,7 +1,7 @@
 define([
         "dojo/_base/declare",
         "../library/ActionNode",
-		"../library/WorkItem"
+		"../library/WorkItem",
 ], function(declare, ActionNode, WorkItem) {
 	var cssSelector = "img.button-img";
 
@@ -28,6 +28,23 @@ define([
 		//			workingCopy: {}
 		//		}
 		constructor: function(params) {
+			// extract this functionality into a separate class
+			var observer = new MutationObserver(function(mutations) {
+				mutations.forEach(function(mutation) {
+					if(mutation.target.title === params.actionSpec.label) {
+						observer.disconnect();
+						[].forEach.call(document.querySelectorAll('[alt="Create child work item"]'), function(node) {
+							node.style.background = 'rgba(0, 0, 0, 0) url("' + net.jazz.ajax._contextRoot + '/service/com.ibm.team.rtc.common.internal.service.web.sprite.ISpriteImageService/img/bundle?id=com.ibm.team.workitem.common&etag=b8b09f70d69bbc3fef0753f03eb21ae9") no-repeat scroll -96px -96px';
+						});
+					}
+				});
+			});
+
+			var config = { attributes: true, childList: true, characterData: true, subtree: true };
+			observer.observe(document.body, config);
+			
+
+
 			var nodeLabel = params.actionSpec.label;
 			this._buttonNode = new ActionNode(cssSelector, nodeLabel);
 		},

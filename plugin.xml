@@ -9,7 +9,7 @@
 	      <action
              action="com.siemens.bt.jazz.workitemeditor.createchild.ui.CreateChildAction"
              iconContext="com.siemens.bt.jazz.workitemeditor.createchild"
-             iconUri="images/icons/child_item.png"
+             iconUri=""
              id="createchild.action"
              isMenuAction="true"	
              label="Create child work item">

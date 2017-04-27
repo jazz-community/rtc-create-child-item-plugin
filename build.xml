@@ -17,27 +17,26 @@
 	<property name="features" value="features" />
 	<property name="plugins" value="plugins" />
 	<property name="this.dir" location="." />
-	<property name="parent.dir" location=".." />
 	<property name="dist.dir" location="${this.dir}/dist" />
 	<property name="home.dir" location="${dist.dir}/${page-extension-site}" />
 	<property name="feature.dir" location="${home.dir}/${features}" />
 	<property name="plugins.dir" location="${home.dir}/${plugins}" />
 	<property name="deployment.props" location="${this.dir}/deployment-properties.ini" />
-	
+
 	<target name="init">
 		<tstamp />
 		<mkdir dir="${home.dir}" />
 		<mkdir dir="${feature.dir}" />
 		<mkdir dir="${plugins.dir}" />
 	</target>
-	
+
 	<target name="createPropertyFile" depends="init">
 		<propertyfile file="${deployment.props}">
 			<entry key="pluginFolderName" value="${page-extension-site}"/>
 			<entry key="pluginFeatureId" value="${featureID}"/>
 		</propertyfile>
 	</target>
-	
+
 	<target name="createInIfile" depends="init">
 		<propertyfile file="${dist.dir}/${page-extension-site}.ini" comment="Copy this file into conf/${appType}/provision_profiles folder">
 			<entry key="url" value="file:${appType}/sites/${page-extension-site}"/>
@@ -45,7 +44,7 @@
 		</propertyfile>
 		<replace file="${dist.dir}/${page-extension-site}.ini" token="\:" value=":"/>
 	</target>
-	
+
 	<target name="packPlugin">
 		<copy todir="${plugins.dir}">
 			<fileset dir="${this.dir}">
@@ -65,7 +64,7 @@
 		    </fileset>
 		</delete>
 	</target>
-	
+
 	<target name="createFeatureXML">
 		<echoxml file="${feature.dir}/feature.xml">
 			<feature 
@@ -93,10 +92,9 @@
 				         install-size="0"
 				         version="${version}.${DSTAMP}${TSTAMP}"/>
 			</feature>
-			
 		</echoxml>
 	</target>
-	
+
 	<target name="createSiteXML">
 		<echoxml file="${dist.dir}/${page-extension-site}/site.xml">
 			<site>
@@ -108,14 +106,14 @@
 		</echoxml>
 		<echo message="created site.xml" />
 	</target>
-	
+
 	<target name="createFeatureJar" depends="createSiteXML">
 		<echo message= "creating feature jar" />
 		<zip destfile="${feature.dir}/${featureID}_${version}.${DSTAMP}${TSTAMP}.jar">
 			<fileset dir="${feature.dir}" />
 		</zip>
 	</target>
-	
+
 	<target name="dist" depends="createInIfile,createPropertyFile,createFeatureXML,packPlugin,createFeatureJar">
 		<delete file="${feature.dir}/feature.xml" />
 		<zip destfile="${zipName}_${buildLabel}.zip">

@@ -4,6 +4,7 @@ define([
 		"../library/WorkItem",
 ], function(declare, ActionNode, WorkItem) {
 	var cssSelector = "img.button-img";
+	var backgroundUrl = "/service/com.ibm.team.rtc.common.internal.service.web.sprite.ISpriteImageService/img/bundle?id=com.ibm.team.workitem.common&etag=b8b09f70d69bbc3fef0753f03eb21ae9"
 
 	return declare("com.siemens.bt.jazz.workitemeditor.createchild.ui.CreateChildAction", 
 			com.ibm.team.workitem.web.ui2.internal.action.AbstractAction, {
@@ -28,13 +29,14 @@ define([
 		//			workingCopy: {}
 		//		}
 		constructor: function(params) {
+			var nodeLabel = params.actionSpec.label;
 			// extract this functionality into a separate class
 			var observer = new MutationObserver(function(mutations) {
 				mutations.forEach(function(mutation) {
-					if(mutation.target.title === params.actionSpec.label) {
+					if (mutation.target.title === nodeLabel) {
 						observer.disconnect();
-						[].forEach.call(document.querySelectorAll('[alt="Create child work item"]'), function(node) {
-							node.style.background = 'rgba(0, 0, 0, 0) url("' + net.jazz.ajax._contextRoot + '/service/com.ibm.team.rtc.common.internal.service.web.sprite.ISpriteImageService/img/bundle?id=com.ibm.team.workitem.common&etag=b8b09f70d69bbc3fef0753f03eb21ae9") no-repeat scroll -96px -96px';
+						[].forEach.call(document.querySelectorAll('[alt="' + nodeLabel + '"]'), function(node) {
+							node.style.background = 'rgba(0, 0, 0, 0) url("' + net.jazz.ajax._contextRoot + backgroundUrl + '") no-repeat scroll -96px -96px';
 						});
 					}
 				});
@@ -42,10 +44,8 @@ define([
 
 			var config = { attributes: true, childList: true, characterData: true, subtree: true };
 			observer.observe(document.body, config);
-			
 
 
-			var nodeLabel = params.actionSpec.label;
 			this._buttonNode = new ActionNode(cssSelector, nodeLabel);
 		},
 		

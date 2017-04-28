@@ -9,13 +9,13 @@ define([
 
         attach: function() {
             // Check IE compatibility. For some reason, IBM sets the X-UA-Compatible header to
-            // IE-10, which makes ie behave to ancient standards. Chrome, FF etc. just ignore
-            // this header and are then fine with rendering new css rules and using new js features.
+            // IE-10, which makes ie use ancient standards. Chrome, FF etc. just ignore this 
+            // header and are then fine with rendering new css rules and using new js features.
             // IE11 actually supports MutationObserver, so it's a shame we have to do this.
             // (https://msdn.microsoft.com/en-us/library/dn254985%28v=vs.85%29.aspx)
             if (!window.MutationObserver) {
-                // Now, we just use the fall back icon defined in the widget.css defined in the
-                // plugin.xml. Another possible workaround would be using the deprecated mutation
+                // Now, we just use the fall back icon defined in the // plugin.xml. 
+                // Another possible workaround would be using the deprecated mutation
                 // events API. However, those functions have a huge performance penalty and 
                 // severely slow down dynamic pages.
                 return;

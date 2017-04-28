@@ -14,15 +14,12 @@ define([
             var observer = new MutationObserver(function(mutations) {
                 mutations.filter(function(mutation) {
                     return mutation.target.title === self._label;
-                }).forEach(function(mutation) {
-                    // instead of selecting again, I think I should be able to just grab the inner node.
-                    observer.disconnect();
-                    
-                    [].filter.call(mutation.target.childNodes, function(node) {
-                        return node.nodeName.toUpperCase() === "IMG";
-                    }).forEach(function(node) {
-                        node.style.background = backgroundStyle;
-                    });
+                }).reduce(function(acc, buttonParent) {
+                    return acc.concat(Array.from(buttonParent.target.childNodes));
+                }, []).filter(function(child) {
+                    return child.nodeName.toUpperCase() === "IMG";
+                }).map(function(backgroundNode) {
+                    backgroundNode.style.background = backgroundStyle;
                 });
             });
 

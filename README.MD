@@ -22,8 +22,9 @@ Install just like any other update site:
     * If the server is currently running, call `https://server-address/ccm/admin/cmd/requestReset`
     * Navigate to `https://localhost:9443/ccm/admin?internaltools=true` so you can see the internal tools (on the left in the side-pane). Click on `Server Reset` and press the `Request Server Reset` button
     * If your server is down, you can delete the ccm `built-on.txt` file. Liberty packed with 6.0.3 puts this file in a subfolder of `server/liberty/servers/clm/workarea/org.eclipse.osgi/**/ccm`. The easiest way to locate the file is using your operating system's search capabilites.
-2. Follow the file extraction steps from the section above
-3. Restart the server
+2. Delete previously deployed updatesite folder
+3. Follow the file extraction steps from the section above
+4. Restart the server
 
 ### More Information
 For more information about deploying extensions, check out [Ralph Schoon's blog](https://rsjazz.wordpress.com/2014/06/12/is-the-extension-deployed-how-can-i-redeploy/)

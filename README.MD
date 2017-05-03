@@ -10,7 +10,23 @@ The current implementation supports the simple creation of an empty child work i
 
 ## Installation
 
-(Explanation of where to copy files)
+Install just like any other update site:
+
+* Extract the `com.siemens.bt.jazz.workitemeditor.createchild_updatesite.ini` *file* from the zip file to the `server/conf/ccm/provision_profiles` directory
+* Extract the `com.siemens.bt.jazz.workitemeditor.createchild_updatesite` *folder* to the `server/conf/ccm/sites` directory
+* Restart the server
+
+## Update existing installation
+
+* Request a server reset in one of the following ways:
+..* If the server is currently running, call `https://server-address/ccm/admin/cmd/requestReset`
+..* Navigate to `https://localhost:9443/ccm/admin?internaltools=true` so you can see the internal tools (on the left in the side-pane). Click on `Server Reset` and press the `Request Server Reset` button
+..* If your server is down, you can delete the ccm `built-on.txt` file. Liberty packed with 6.0.3 puts this file  in `server/liberty/servers/clm/apps/ccm.war/WEB-INF`, but you can also use any search capability to find the file.
+* Follow the file extraction steps from the section above
+* Restart the server
+
+## More Information
+For more information about deploying extensions, check out [Ralph Schoon's blog](https://rsjazz.wordpress.com/2014/06/12/is-the-extension-deployed-how-can-i-redeploy/)
 
 ### Download from Github
 (link to current release)

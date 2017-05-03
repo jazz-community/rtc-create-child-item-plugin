@@ -21,12 +21,14 @@ Install just like any other update site:
 1. Request a server reset in one of the following ways:
     * If the server is currently running, call `https://server-address/ccm/admin/cmd/requestReset`
     * Navigate to `https://localhost:9443/ccm/admin?internaltools=true` so you can see the internal tools (on the left in the side-pane). Click on `Server Reset` and press the `Request Server Reset` button
-    * If your server is down, you can delete the ccm `built-on.txt` file. Liberty packed with 6.0.3 puts this file  in `server/liberty/servers/clm/apps/ccm.war/WEB-INF`, but you can also use any search capability to find the file.
+    * If your server is down, you can delete the ccm `built-on.txt` file. Liberty packed with 6.0.3 puts this file in a subfolder of `server/liberty/servers/clm/workarea/org.eclipse.osgi/**/ccm`. The easiest way to locate the file is using your operating system's search capabilites.
 2. Follow the file extraction steps from the section above
 3. Restart the server
 
-## More Information
+### More Information
 For more information about deploying extensions, check out [Ralph Schoon's blog](https://rsjazz.wordpress.com/2014/06/12/is-the-extension-deployed-how-can-i-redeploy/)
+
+## Acquiring an installable
 
 ### Download from Github
 (link to current release)
@@ -36,7 +38,7 @@ For more information about deploying extensions, check out [Ralph Schoon's blog]
 2. Navigate to the project's root folder: `$ cd jazz-create-child-item-plugin`
 3. Run ant `$ ant`
 
-If the build was successful, there will be a file called `CreateChild.zip` in the folder you ran ant from. This file was created from the checked out sources and is deployable.
+If the build was successful, there is a file called `CreateChild.zip` in the folder you ran ant from. This file was created from the checked out sources and is deployable.
 
 ### Use your JBE
 The supplied build.xml file can be run on the Jazz Build Engine. How to set up a jazz build is not part of this readme.

@@ -28,7 +28,7 @@ For more information about deploying extensions, check out [Ralph Schoon's blog]
 ## Acquiring an installable
 
 ### Download from Github
-(link to current release)
+Current stable release: [v1.0.0 CreateChild.zip](https://github.com/SBI-/jazz-create-child-item-plugin/releases/download/v1.0.0/CreateChild.zip)
 
 ### Create a source build from the command line
 1. Clone this repository to your computer: `$ git clone git@github.com:SBI-/jazz-create-child-item-plugin.git`
@@ -41,3 +41,43 @@ If the build was successful, there is a file called `CreateChild.zip` in the fol
 The supplied build.xml file can be run on the Jazz Build Engine. How to set up a jazz build is not part of this readme.
 
 ## Source explanation
+The inspirtation for extending the work item editor was taken from [Creating a Linked Defect from a Work Item Editor Toolbar Action](https://jazz.net/library/article/782). It summerizes how to create toolbar actions and links to the related wiki article. The following is a list of files relevant to the functionality of the create child plugin.
+
+com.siemens.bt.jazz.workitemeditor.createchild
+│   build.xml                               Ant build script
+│   plugin.xml                              Plugin configuration
+├───META-INF
+│       MANIFEST.MF                         Jar metainformation
+│
+└───resources
+    ├───images
+    │   └───icons
+    │           fallback_icon_child.png     Icon displayed when the correct icon is unavailable on the server
+    │
+    ├───library                             Library code for working inside the work item editor
+    │       ActionButtonIcon.js             Injects child icon into work item editor
+    │       ActionNode.js                   Wrapper for a button node in the work item editor
+    │       Discovery.js                    OSLC url lookup
+    │       HoverViewWrapper.js             Wrapper for using a hover view with custom widgets
+    │       WorkItem.js                     Custom work item code
+    │
+    └───ui
+        │   CreateChildAction.js            Entry point for the plugin within the work item editor
+        │
+        └───widget
+            │   _AbstractActionWidget.js    Abstract widget that can be inherited to wrap in a hover view
+            │
+            ├───css
+            │       widget.css              CSS styling for custom widgets
+            │
+            ├───nls                         Internationalization files (currently unused)
+            └───templates                   HTML templates for widgets (current unused)
+
+## Contributing
+Please use the [Issue Tracker](https://github.com/jazz-community/__________/issues) of this repository to report issues or suggest enhancements.<br>
+Pull requests are very welcome.
+
+## Licensing
+Copyright (c) Siemens AG. All rights reserved.<br>
+Licensed under the [MIT](https://github.com/jazz-community/_______/blob/master/LICENSE) License.
+

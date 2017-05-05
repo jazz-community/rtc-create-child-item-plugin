@@ -4,7 +4,7 @@ Work item editor plugin that allows fast and simple creation of child items. A s
 ## Basic usage
 The current implementation supports the simple creation of an empty child work item of the current work item. Open a work item and press the button to create a direct child. The newly created work item will be empty except for a link back to the parent.
 
-![alt tag](https://github.com/SBI-/jazz-create-child-item-plugin/blob/master/documentation/work_item_action.png)
+![Work item editor screenshot](https://github.com/jazz-community/jazz-create-child-item-plugin/blob/master/documentation/work_item_action.png)
 
 ## Installation
 Install just like any other update site:
@@ -28,7 +28,7 @@ For more information about deploying extensions, check out [Ralph Schoon's blog]
 ## Acquiring an installable
 
 ### Download from Github
-Current stable release: [v1.0.0 CreateChild.zip](https://github.com/SBI-/jazz-create-child-item-plugin/releases/download/v1.0.0/CreateChild.zip)
+Current stable release: [v1.0.0 CreateChild.zip](https://github.com/jazz-community/jazz-create-child-item-plugin/releases/download/v1.0.0/CreateChild.zip)
 
 ### Create a source build from the command line
 1. Clone this repository to your computer: `$ git clone git@github.com:SBI-/jazz-create-child-item-plugin.git`
@@ -76,10 +76,10 @@ com.siemens.bt.jazz.workitemeditor.createchild
 ```
 
 ## Contributing
-Please use the [Issue Tracker](https://github.com/jazz-community/__________/issues) of this repository to report issues or suggest enhancements.<br>
+Please use the [Issue Tracker](https://github.com/jazz-community/jazz-create-child-item-plugin/issues) of this repository to report issues or suggest enhancements.<br>
 Pull requests are very welcome.
 
 ## Licensing
 Copyright (c) Siemens AG. All rights reserved.<br>
-Licensed under the [MIT](https://github.com/jazz-community/_______/blob/master/LICENSE) License.
+Licensed under the [MIT](https://github.com/jazz-community/jazz-create-child-item-plugin/blob/master/LICENSE) License.
 

@@ -43,6 +43,7 @@ The supplied build.xml file can be run on the Jazz Build Engine. How to set up a
 ## Source explanation
 The inspirtation for extending the work item editor was taken from [Creating a Linked Defect from a Work Item Editor Toolbar Action](https://jazz.net/library/article/782). It summerizes how to create toolbar actions and links to the related wiki article. The following is a list of files relevant to the functionality of the create child plugin.
 
+...
 com.siemens.bt.jazz.workitemeditor.createchild
 │   build.xml                               Ant build script
 │   plugin.xml                              Plugin configuration
@@ -72,6 +73,7 @@ com.siemens.bt.jazz.workitemeditor.createchild
             │
             ├───nls                         Internationalization files (currently unused)
             └───templates                   HTML templates for widgets (current unused)
+...
 
 ## Contributing
 Please use the [Issue Tracker](https://github.com/jazz-community/__________/issues) of this repository to report issues or suggest enhancements.<br>

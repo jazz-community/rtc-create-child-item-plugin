@@ -1,15 +1,12 @@
-# Create Child Item
-
+# Create Child Work Item Editor Extension
 Work item editor plugin that allows fast and simple creation of child items. A single click will create a new, empty, work item which has the current work item assigned as it's parent.
 
 ## Basic usage
-
 The current implementation supports the simple creation of an empty child work item of the current work item. Open a work item and press the button to create a direct child. The newly created work item will be empty except for a link back to the parent.
 
 ![alt tag](https://github.com/SBI-/jazz-create-child-item-plugin/blob/master/documentation/work_item_action.png)
 
 ## Installation
-
 Install just like any other update site:
 
 1. Extract the `com.siemens.bt.jazz.workitemeditor.createchild_updatesite.ini` **file** from the zip file to the `server/conf/ccm/provision_profiles` directory
@@ -17,7 +14,6 @@ Install just like any other update site:
 3. Restart the server
 
 ## Update existing installation
-
 1. Request a server reset in one of the following ways:
     * If the server is currently running, call `https://server-address/ccm/admin/cmd/requestReset`
     * Navigate to `https://localhost:9443/ccm/admin?internaltools=true` so you can see the internal tools (on the left in the side-pane). Click on `Server Reset` and press the `Request Server Reset` button

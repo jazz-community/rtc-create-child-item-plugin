@@ -14,7 +14,7 @@
 	<!-- identifier of the feature -->
 	<property name="featureID" value="${pluginID}.feature" />
 	<!-- current version -->
-	<property name="version" value="0.1.0" />
+	<property name="version" value="1.0.0" />
 	<!-- path to node installation -->
 	<property name="projectSource" value="${pluginID}" />
 	<property name="features" value="features" />
@@ -80,7 +80,7 @@
                       Create new child items from the work item editor
 				</description>
 				<copyright>
-				      Copyright (c) 2015 by Siemens Building Technologies AG
+				      Copyright (c) 2017, Siemens AG
 				</copyright>
 				<license>
                       MIT License

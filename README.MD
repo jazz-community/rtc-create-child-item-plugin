@@ -1,13 +1,13 @@
 # Create Child Work Item Editor Extension
-Work item editor plugin that allows fast and simple creation of child work items. A single click will create a new, empty, work item which has the current work item assigned as it's parent.
+Work item editor plugin that allows fast and simple creation of child work items. A single click in the work item editor will create a new, empty, work item which has the current work item assigned as it's parent.
 
 ## Basic usage
-The current implementation supports the simple creation of an empty child work item of the current work item. Open a work item and press the button to create a direct child. The newly created work item will be empty except for a link back to the parent.
+The current implementation supports the simple creation of an empty child work item linked to the current work item. Open a work item and press the button to create a direct child. The newly created work item will be empty except for a link back to the parent.
 
 ![Work item editor screenshot](https://github.com/jazz-community/jazz-create-child-item-plugin/blob/master/documentation/work_item_action.png)
 
 ## Installation
-Install just like any other update site:
+Deploy just like any other update site:
 
 1. Extract the `com.siemens.bt.jazz.workitemeditor.createchild_updatesite.ini` **file** from the zip file to the `server/conf/ccm/provision_profiles` directory
 2. Extract the `com.siemens.bt.jazz.workitemeditor.createchild_updatesite` **folder** to the `server/conf/ccm/sites` directory
@@ -23,7 +23,7 @@ Install just like any other update site:
 4. Restart the server
 
 ### More Information
-For more information about deploying extensions, check out [Ralph Schoon's blog](https://rsjazz.wordpress.com/2014/06/12/is-the-extension-deployed-how-can-i-redeploy/).
+For more information on deploying extensions, check out [Ralph Schoon's blog](https://rsjazz.wordpress.com/2014/06/12/is-the-extension-deployed-how-can-i-redeploy/).
 
 ## Acquiring an installable
 
@@ -35,7 +35,7 @@ The current stable release can be downloaded directly from the [Releases page](h
 2. Navigate to the project's root folder: `cd jazz-create-child-item-plugin`
 3. Run ant: `ant`(requires [Apache Ant](http://ant.apache.org/))
 
-If the build was successful, there is a file called `CreateChild.zip` in the folder you ran ant from. This file was created out of the checked out sources and is immediately deployable to RTC.
+If the build was successful, there is a file called `CreateChild.zip` in the folder you ran ant from. This file was created from the checked out sources and is immediately deployable to RTC.
 
 ### Build using JBE
 The supplied build.xml file can be run on the Jazz Build Engine (JBE). However, setting up a JBE based build is not part of this readme.
@@ -56,6 +56,7 @@ com.siemens.bt.jazz.workitemeditor.createchild
     │           fallback_icon_child.png     Icon displayed when the correct icon is unavailable on the server
     │
     ├───library                             Library code for working inside the work item editor
+    |
     │       ActionButtonIcon.js             Injects child icon into work item editor
     │       ActionNode.js                   Wrapper for a button node in the work item editor
     │       Discovery.js                    OSLC url lookup

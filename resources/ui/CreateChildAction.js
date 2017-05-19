@@ -56,9 +56,9 @@ define([
 		},
 
         makeWidget: function(params) {
-            var mindWith = this._buttonNode.calculateMinWidth();
+            var minWidth = this._buttonNode.calculateMinWidth();
             var workingCopy = params.workingCopy || params;
-            return new CreateChildWidget(mindWith, params);
+            return new CreateChildWidget(minWidth, workingCopy);
         }
 
 	});

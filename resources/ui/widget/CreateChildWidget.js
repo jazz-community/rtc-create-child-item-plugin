@@ -25,6 +25,7 @@ define([
         },
 
         startup: function() {
+            this.test();
             // bind child creation to 'Quick' link
             var self = this;
             var quicklink = query('.quick-create');
@@ -33,5 +34,14 @@ define([
                 workItem.createChildWorkItem(self.workItem.idLabel);
             });
         },
+
+        test: function() {
+            var properties = this.workItem.workItemSpec.editProps.allValues;
+            var workItemType = properties.find(function(x) { return x.attributeName === 'workItemType' });
+            // var workItems = document.getElementsByClassName('workitems');
+            var workItems = query('.workitems');
+            console.log(workItems);
+            workItemType.uiItems.forEach(function(x) { console.log(x.label) });
+        }
     });
 });

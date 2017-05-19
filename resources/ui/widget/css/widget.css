@@ -35,6 +35,20 @@
     bottom: 1px;
 }
 
+.create-child-widget .dropdown label span {
+    width: 8em;
+    display: inline-block;
+}
+
+.create-child-widget .dropdown label select {
+    width: 12em;
+    display: inline-block;
+}
+
+.create-child-widget .dropdown.linktype {
+    padding-top: 10px;
+}
+
 .create-child-widget .selection label span {
     margin: 0 0 0 10px;
 }

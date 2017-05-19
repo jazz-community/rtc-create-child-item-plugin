@@ -1,12 +1,19 @@
 define([
     // dojo
     "dojo/_base/declare",
+    "dojo/on",
+    "dojo/query",
+    // library
+    "../../library/WorkItem",
     // templating
     "./_AbstractActionWidget",
     "dijit/_TemplatedMixin",
     "dojo/text!./templates/CreateChildTemplate.html"
 ], function(
     declare,
+    on,
+    query,
+    WorkItem,
     _AbstractActionWidget,
     _TemplatedMixin,
     HtmlTemplate
@@ -15,7 +22,16 @@ define([
         templateString: HtmlTemplate,
 
         constructor: function() {
+        },
 
-        }
+        startup: function() {
+            // bind child creation to 'Quick' link
+            var self = this;
+            var quicklink = query('.quick-create');
+            quicklink.on('click', function() {
+                var workItem = new WorkItem();
+                workItem.createChildWorkItem(self.workItem.idLabel);
+            });
+        },
     });
 });

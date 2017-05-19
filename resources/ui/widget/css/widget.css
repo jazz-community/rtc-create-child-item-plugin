@@ -2,7 +2,35 @@
     padding: 0 10px 10px 10px;
 }
 
+.create-child-widget header {
+    position: relative;
+}
+
+.create-child-widget header a, .create-child-widget header a {
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+}
+
 .create-child-widget p {
     padding: 0 0 0 10px;
     margin: 0;
+}
+
+.create-child-widget .selection {
+    margin: 10px 0 0 0;
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+}
+
+.create-child-widget .selection input[type=checkbox] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+
+.create-child-widget .selection label span {
+    margin: 0 0 0 10px;
 }

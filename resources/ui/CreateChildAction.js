@@ -1,9 +1,12 @@
 define([
-        "dojo/_base/declare",
-        "../library/ActionNode",
-		"../library/WorkItem",
-		"../library/ActionButtonIcon"
-], function(declare, ActionNode, WorkItem, ActionButtonIcon) {
+    "dojo/_base/declare",
+    "dijit/focus",
+    "./widget/CreateChildWidget",
+    "../library/ActionNode",
+    "../library/WorkItem",
+    "../library/ActionButtonIcon",
+    "../library/HoverViewWrapper"
+], function(declare, focus, CreateChildWidget, ActionNode, WorkItem, ActionButtonIcon, HoverViewWrapper) {
 	var cssSelector = "img.button-img";
 	var backgroundUrl = "/service/com.ibm.team.rtc.common.internal.service.web.sprite.ISpriteImageService/img/bundle?id=com.ibm.team.workitem.common&etag=b8b09f70d69bbc3fef0753f03eb21ae9"
 
@@ -45,8 +48,18 @@ define([
 		//	params: {actionSpec, workingCopy}
 		//		Same as the params passed to the constructor.
 		run: function(params) {
-			var workItem = new WorkItem();
-			workItem.createChildWorkItem(params.workingCopy.idLabel);
-		}
+//			var workItem = new WorkItem();
+//			workItem.createChildWorkItem(params.workingCopy.idLabel);
+            var widget = this.makeWidget(params);
+            var hoverViewWrapper = new HoverViewWrapper(this._buttonNode.getPosition(), widget);
+            focus.focus(hoverViewWrapper.getDomNode());
+		},
+
+        makeWidget: function(params) {
+            var mindWith = this._buttonNode.calculateMinWidth();
+            var workingCopy = params.workingCopy || params;
+            return new CreateChildWidget(mindWith, params);
+        }
+
 	});
 });

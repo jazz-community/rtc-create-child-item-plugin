@@ -3,6 +3,7 @@ define([
     "dojo/_base/declare",
     "dojo/on",
     "dojo/query",
+    "dojo/dom-construct",
     // library
     "../../library/WorkItem",
     // templating
@@ -13,6 +14,7 @@ define([
     declare,
     on,
     query,
+    domConstruct,
     WorkItem,
     _AbstractActionWidget,
     _TemplatedMixin,
@@ -38,10 +40,12 @@ define([
         test: function() {
             var properties = this.workItem.workItemSpec.editProps.allValues;
             var workItemType = properties.find(function(x) { return x.attributeName === 'workItemType' });
-            // var workItems = document.getElementsByClassName('workitems');
             var workItems = query('.workitems');
-            console.log(workItems);
-            workItemType.uiItems.forEach(function(x) { console.log(x.label) });
+
+            workItemType.uiItems.forEach(function(x) {
+                console.log(x);
+                domConstruct.place('<option value="' + x.id + '">'+ x.label +'</option>', workItems[0], 'last');
+            });
         }
     });
 });

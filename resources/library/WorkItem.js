@@ -10,15 +10,21 @@ define([
             this.discovery = new Discovery();
         },
 
-        createChildWorkItem: function(parentId) {
-            var data = {
-                "dc:type": "task",
-                "rtc_cm:com.ibm.team.workitem.linktype.parentworkitem.parent":
-                {
-                    "rdf:resource" : this.discovery.workitems() + parentId
-                }
-            };
+        createQuick: function(parentId) {
+            var itemType = 'task',
+                linkType = 'com.ibm.team.workitem.linktype.parentworkitem.parent';
 
+            this.createChildWorkItem(parentId, itemType, linkType);
+        },
+
+        createChildWorkItem: function(parentId, itemType, linkType) {
+            var data = {
+                "dc:type": itemType
+            };
+            data['rtc_cm:' + linkType] = {
+                "rdf:resource": this.discovery.workitems() + parentId
+            };
+            
             var dataString = json.stringify(data);
 
             jazz.client.xhrPost({

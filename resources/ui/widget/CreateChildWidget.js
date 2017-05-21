@@ -35,7 +35,7 @@ define([
             var self = this;
             query('.quick-create').on('click', function() {
                 var workItem = new WorkItem();
-                workItem.createChildWorkItem(self.workItem.idLabel);
+                workItem.createQuick(self.workItem.idLabel);
             });
 
             // bind check box status to links

@@ -1,4 +1,7 @@
+#editors
 *.swp
+.idea
+
 **/.jazzignore
 buildengine.xml
 

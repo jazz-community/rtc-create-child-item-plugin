@@ -45,7 +45,7 @@ define([
             var workItemType = properties.find(function(x) { return x.attributeName === 'workItemType' });
             var workItemNode = query('.workitems')[0];
 
-            workItemType.uiItems.forEach(function(x) {
+            workItemType.uiItems.map(function(x) {
                 domConstruct.place('<option value="' + x.id + '">'+ x.label +'</option>', workItemNode, 'last');
             });
         },
@@ -54,8 +54,10 @@ define([
             var linktypes = this.workItem.workItemSpec.editableLinkTypes;
             var linkNode = query('.linktypes')[0];
 
-            linktypes.forEach(function(x){
-                domConstruct.place('<option>' + x.displayName + '</option>', linkNode, 'last');
+            linktypes.filter(function(linkType) {
+                return linkType.isUserWriteable && linkType.isUserDeleteable;
+            }).map(function(linkType) {
+                domConstruct.place('<option>' + linkType.displayName + '</option>', linkNode, 'last');
             });
         }
     });

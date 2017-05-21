@@ -7,11 +7,14 @@
 }
 
 .create-child-widget header a, .create-child-widget header a {
-    cursor: pointer;
-    text-decoration: none;
     display: inline-block;
     position: absolute;
     right: 0px;
+}
+
+.create-child-widget a, .create-child-widget a:hover {
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .create-child-widget p {
@@ -19,9 +22,17 @@
     margin: 0;
 }
 
-.create-child-widget .selection {
+.create-child-widget .toggle-selection a {
+    padding: 0 0 0 10px;
+}
+
+.create-child-widget .selection, .create-child-widget .child-button {
     margin: 10px 0 0 0;
     padding: 0 10px 10px 10px;
+}
+
+.create-child-widget .child-button {
+    text-align: right;
 }
 
 .create-child-widget .selection fieldset {
@@ -52,3 +63,4 @@
 .create-child-widget .selection label span {
     margin: 0 0 0 10px;
 }
+

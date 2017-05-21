@@ -28,19 +28,29 @@ define([
 
         startup: function() {
             console.log(this.workItem);
-            this.workitemTest();
-            this.linkTypeTest();
+            this.bindWorkItemTypes();
+            this.bindLinkTypes();
 
             // bind child creation to 'Quick' link
             var self = this;
-            var quicklink = query('.quick-create');
-            quicklink.on('click', function() {
+            query('.quick-create').on('click', function() {
                 var workItem = new WorkItem();
                 workItem.createChildWorkItem(self.workItem.idLabel);
             });
+
+            // bind check box status to links
+            query('.set-selection > a').on('click', function(e) {
+                self._setCheckBoxStatus(status = e.target.getAttribute('value'));
+            });
         },
 
-        workitemTest: function() {
+        _setCheckBoxStatus: function(status) {
+            query('input[type="checkbox"]').map(function(checkbox) {
+                checkbox.checked = status === 'true';
+            });
+        },
+
+        bindWorkItemTypes: function() {
             var properties = this.workItem.workItemSpec.editProps.allValues;
             var workItemType = properties.find(function(x) { return x.attributeName === 'workItemType' });
             var workItemNode = query('.workitems')[0];
@@ -50,7 +60,7 @@ define([
             });
         },
 
-        linkTypeTest: function () {
+        bindLinkTypes: function () {
             var linktypes = this.workItem.workItemSpec.editableLinkTypes;
             var linkNode = query('.linktypes')[0];
 

@@ -27,7 +27,10 @@ define([
         },
 
         startup: function() {
-            this.test();
+            console.log(this.workItem);
+            this.workitemTest();
+            this.linkTypeTest();
+
             // bind child creation to 'Quick' link
             var self = this;
             var quicklink = query('.quick-create');
@@ -37,14 +40,22 @@ define([
             });
         },
 
-        test: function() {
+        workitemTest: function() {
             var properties = this.workItem.workItemSpec.editProps.allValues;
             var workItemType = properties.find(function(x) { return x.attributeName === 'workItemType' });
-            var workItems = query('.workitems');
+            var workItemNode = query('.workitems')[0];
 
             workItemType.uiItems.forEach(function(x) {
-                console.log(x);
-                domConstruct.place('<option value="' + x.id + '">'+ x.label +'</option>', workItems[0], 'last');
+                domConstruct.place('<option value="' + x.id + '">'+ x.label +'</option>', workItemNode, 'last');
+            });
+        },
+
+        linkTypeTest: function () {
+            var linktypes = this.workItem.workItemSpec.editableLinkTypes;
+            var linkNode = query('.linktypes')[0];
+
+            linktypes.forEach(function(x){
+                domConstruct.place('<option>' + x.displayName + '</option>', linkNode, 'last');
             });
         }
     });

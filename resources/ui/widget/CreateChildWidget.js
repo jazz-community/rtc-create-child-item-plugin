@@ -55,8 +55,8 @@ define([
             var workItemType = properties.find(function(x) { return x.attributeName === 'workItemType' });
             var workItemNode = query('.workitems')[0];
 
-            workItemType.uiItems.map(function(x) {
-                domConstruct.place('<option value="' + x.id + '">'+ x.label +'</option>', workItemNode, 'last');
+            workItemType.uiItems.map(function(type) {
+                domConstruct.place('<option value="' + type.id + '">'+ type.label +'</option>', workItemNode, 'last');
             });
         },
 
@@ -67,7 +67,7 @@ define([
             linktypes.filter(function(linkType) {
                 return linkType.isUserWriteable && linkType.isUserDeleteable;
             }).map(function(linkType) {
-                domConstruct.place('<option>' + linkType.displayName + '</option>', linkNode, 'last');
+                domConstruct.place('<option linkid="' + linkType.id + '">' + linkType.displayName + '</option>', linkNode, 'last');
             });
         }
     });

@@ -27,16 +27,27 @@ define([
         },
 
         startup: function() {
+            // TODO: remove this log
+            // TODO: button state depending on selection
             console.log(this.workItem);
             this.bindWorkItemTypes();
             this.bindLinkTypes();
 
             // bind child creation to 'Quick' link
             var self = this;
+            var workItem = new WorkItem();
             query('.quick-create').on('click', function() {
-                var workItem = new WorkItem();
-                workItem.createQuick(self.workItem.idLabel);
+                workItem.createQuick(self.workItem);
             });
+
+            // bind child creation to button
+            query('.child-creation-button > .primary-button').on('click', function(e) {
+                var itemNode = query('.workitems')[0];
+                var linkNode = query('.linktypes')[0];
+                var itemType = itemNode[itemNode.selectedIndex].value;
+                var linkType = linkNode[linkNode.selectedIndex].value;
+                workItem.createChildWorkItem(self.workItem, itemType, linkType);
+            })
 
             // bind check box status to links
             query('.set-selection > a').on('click', function(e) {
@@ -61,14 +72,14 @@ define([
             });
         },
 
-        bindLinkTypes: function () {
+        bindLinkTypes: function() {
             var linktypes = this.workItem.workItemSpec.editableLinkTypes;
             var linkNode = query('.linktypes')[0];
 
             linktypes.filter(function(linkType) {
                 return linkType.isUserWriteable && linkType.isUserDeleteable;
             }).map(function(linkType) {
-                var node = '<option linkid="' + linkType.id + '">' + linkType.displayName + '</option>';
+                var node = '<option value="' + linkType.id + '">' + linkType.displayName + '</option>';
                 domConstruct.place(node, linkNode, 'last');
             });
         }

@@ -26,12 +26,12 @@
     padding: 0 0 0 10px;
 }
 
-.create-child-widget .selection, .create-child-widget .child-button {
+.create-child-widget .selection, .create-child-widget .child-creation-button {
     margin: 10px 0 0 0;
     padding: 0 10px 10px 10px;
 }
 
-.create-child-widget .child-button {
+.create-child-widget .child-creation-button {
     text-align: right;
 }
 

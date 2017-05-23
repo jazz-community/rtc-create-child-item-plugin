@@ -1,11 +1,11 @@
 define([
-        "dojo/_base/declare",
+        "dojo/_base/declare"
 ], function(declare) {
     return declare(null, {
 
         // These aren't really discovery functions, but parsing a whole lot of xml every
         // time seems even more ridiculous, especially in javascript.
-        base: function () {
+        base: function() {
             return window.location.protocol + "//" + window.location.host;
         },
 
@@ -34,7 +34,11 @@ define([
         },
 
         projectArea: function() {
-            return this.oslc() + "projectareas/" + jazz.app.context.get().itemId;
+            return this.oslc() + 'projectareas/' + jazz.app.context.get().itemId;
+        },
+
+        shapes: function() {
+            return this.currentContext() + '/shapes/workitems/';
         }
 
     });

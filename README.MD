@@ -77,7 +77,7 @@ com.siemens.bt.jazz.workitemeditor.createchild
 ```
 
 ## Contributing
-Please use the [Issue Tracker](https://github.com/jazz-community/rtc-absence-widget/issues) of this repository to report issues or suggest enhancements.
+Please use the [Issue Tracker](https://github.com/jazz-community/rtc-create-child-item-plugin/issues) of this repository to report issues or suggest enhancements.
 
 For general contribution guidelines, please refer to [CONTRIBUTING.md](https://github.com/jazz-community/rtc-create-child-item-plugin/blob/master/CONTRIBUTING.md)
 

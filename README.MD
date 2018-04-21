@@ -1,7 +1,7 @@
+:warning: From RTC 6.0.6 M3 onward, this feature is now delivered by IBM out of the box (see [Release Notes](https://jazz.net/pub/new-noteworthy/rtc/6.0.6/M3/index.html#5)). As child creation out of the work item editor is now part of the product, **we will no longer actively maintain or improve this plugin**. :warning: 
+
 # Create Child Work Item Editor Extension
 Work item editor plugin that allows fast and simple creation of child work items. A single click in the work item editor will create a new, empty, work item which has the current work item assigned as it's parent.
-
-From RTC 6.0.6 M3 onward, this feature is now delivered by IBM out of the box (see [Release Notes](https://jazz.net/pub/new-noteworthy/rtc/6.0.6/M3/index.html#5)). As child creation out of the work item editor is now part of the product, **we will no longer actively maintain or improve this plugin**.
 
 ## Basic usage
 The current implementation supports the simple creation of an empty child work item linked to the current work item. Open a work item and press the button to create a direct child. The newly created work item will be empty except for a link back to the parent.
